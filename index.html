@@ -46,6 +46,10 @@
             try{
                 navigator.notification.beep(2); // Times
                 console.log('تم استخدام الرنين');
+                /*
+                NOTE: Some platforms require "beep.wav" file to be included in project
+                More info: http://plugins.cordova.io/#/package/org.apache.cordova.dialogs
+                 */
             }catch (error){
                 console.log('الرنين غير متوفر');
             }
