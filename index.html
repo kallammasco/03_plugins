@@ -43,6 +43,13 @@
                 console.log('الإهتزاز غير متوفر');
             }
 
+            try{
+                navigator.notification.beep(2); // Times
+                console.log('تم استخدام الرنين');
+            }catch (error){
+                console.log('الرنين غير متوفر');
+            }
+
         }
 
     </script>
