@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Do Something 1 - PhoneGap Demo</title>
+
+    <link rel="stylesheet" href="screen.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+    <script src="phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        window.onload = function () {
+            var myButton = document.getElementById('myButton');
+            myButton.addEventListener('click', doSomething);
+        };
+
+        function doSomething(e) {
+            e.preventDefault();
+            var alertMessage = 'تمت التجربة بنجاح - الحمدلله';
+            var alertTitle = 'تمام';
+            var alertButton = 'قم بعمل التجربة';
+            var alertCallback = function () {
+                console.log('تم رفض التنبيه المحلي');
+            };
+
+            try{
+                navigator.notification.alert(alertMessage, alertCallback, alertTitle, alertButton);
+                console.log('تم استخدام تنبيه جافا سكريبت');
+            }catch(error){
+                alert(alertMessage);
+                console.log('تم استخدام تنبيه جافا سكريبت');
+            }
+
+            try{
+                navigator.vibrate(300); // Milliseconds
+                console.log('تم استخدام الاهتزاز');
+            }catch (error){
+                console.log('الإهتزاز غير متوفر');
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+    <p><a href="#" class="button" id="myButton">قم بالضغط هنا لظهور الرسالة !</a></p>
+    <p>
+        <small><em>Pure web app, no API access</em></small>
+    </p>
+</body>
+</html>
