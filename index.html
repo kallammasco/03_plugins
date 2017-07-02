@@ -26,7 +26,31 @@
             var alertButton = 'تم عمل التجربة';
             var alertCallback = function () {
                 console.log('تم رفض التنبيه المحلي');
+
+                var confMessage = 'Wanna take it back?';
+                var confTitle = 'Last Chance!';
+                var confButton = 'Yep,Nope';
+                var confCallback = function (buttonNumber) {
+                    console.log('native confirmation was dismissed, button number was: ' + buttonNumber);
+                    /*
+                    NOTE: Buttons are 1-based starting from left.
+                    NOTE: Android accepts up to 3 buttons.
+                    NOTE: Some platforms ignore button param and display "Cancel" and "OK"
+                    MORE INFO: http://plugins.cordova.io/#/package/org.apache.cordova.dialogs
+                    */
+                };
+
+                try{
+                    navigator.notification.confirm(confMessage, confCallback, confTitle, confButton);
+                    console.log('native confirmation was used');
+                }catch(error){
+                    alert(alertMessage);
+                    var result = confirm(confMessage);
+                    console.log('javascript confirmation was used, result was: ' + result);
+                }
+
             };
+
 
             try{
                 navigator.notification.alert(alertMessage, alertCallback, alertTitle, alertButton);

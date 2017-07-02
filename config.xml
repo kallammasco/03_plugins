@@ -6,10 +6,10 @@
         versionCode	= "1"
         version		= "0.0.1">
 
-    <name>Plugins Test App</name>
+    <name>Confirm Test App</name>
 
     <description>
-        Example application for button click dialog with vibrate plugins event for javascript.
+        Example application for button click dialog with Confirm event using javascript.
     </description>
 
     <author
